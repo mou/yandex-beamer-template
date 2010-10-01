@@ -1,0 +1,33 @@
+% Copyright 2009 by Larionov Andrey
+\mode<presentation>
+
+%
+%
+% The \authorposition command
+%
+%
+\def\authorposition{\@dblarg\beamer@yandex@authorposition}
+\long\def\beamer@yandex@authorposition[#1]#2{%
+  \def\beamer@temp{#2}%
+  \ifx\beamer@temp\@empty
+    \def\insertauthorposition{}
+  \else
+    \def\insertauthorposition{\def\inst{\beamer@yandex@authorposauthorpos}\def\and{\beamer@yandex@andauthorpos}#2}%
+  \fi
+}
+\authorposition{}
+
+\def\beamer@yandex@authorposauthorpos#1{{\donotcoloroutermaths$^{#1}$}\ignorespaces}
+\def\beamer@yandex@andauthorpos{\\[1em]}
+
+\ProcessOptionsBeamer
+
+\useinnertheme{ya}
+\useoutertheme{strelka}
+\usecolortheme{yell}
+
+\setbeamertemplate{navigation symbols}{}
+
+\mode
+<all>
+

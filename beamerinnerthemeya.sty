@@ -1,0 +1,94 @@
+% Copyright 2007 by Marco Barisione
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\mode<presentation>
+
+% Colors.
+\setbeamercolor*{lineup}{parent=palette primary}
+\setbeamercolor*{linemid}{parent=palette secondary}
+\setbeamercolor*{linebottom}{parent=palette tertiary}
+\setbeamercolor*{title page header}{parent=palette quaternary}
+
+% Lengths.
+\newlength{\beamer@ya@lineup}
+\setlength{\beamer@ya@lineup}{.025\paperheight}
+\newlength{\beamer@ya@linemid}
+\setlength{\beamer@ya@linemid}{.015\paperheight}
+\newlength{\beamer@ya@linebottom}
+\setlength{\beamer@ya@linebottom}{.01\paperheight}
+
+% Margins.
+\newlength{\beamer@ya@hormargin}
+\setlength{\beamer@ya@hormargin}{.1\paperwidth}
+\newlength{\beamer@ya@topmargin}
+\setlength{\beamer@ya@topmargin}{.11\paperheight}
+\newlength{\beamer@ya@bottommargin}
+\setlength{\beamer@ya@bottommargin}{.13\paperheight}
+\setbeamersize{text margin left=\beamer@ya@hormargin}
+\setbeamersize{text margin right=\beamer@ya@hormargin}
+\setbeamersize{text margin top=\beamer@ya@topmargin}
+\setlength\leftmargini{0pt}
+\setlength\leftmarginii{1em}
+\setlength\leftmarginiii{1em}
+
+\newlength{\beamer@ya@titleheight}
+\setlength{\beamer@ya@titleheight}{.236220472\paperheight}
+\newlength{\beamer@ya@titlewidths}
+\setlength{\beamer@ya@titlewidths}{\paperwidth}
+\addtolength{\beamer@ya@titlewidths}{-2\beamer@ya@hormargin}
+
+
+% Alternative title page, you should use this in a frame with the [plain]
+% option.
+\defbeamertemplate*{title page}{ya theme}[1][]
+{
+  %\hbox{\vbox{%
+    % Title.
+  \vspace*{0.373228346\paperheight}
+  \begin{beamercolorbox}[ht=\beamer@ya@titleheight,left,#1]{title page header}
+      \usebeamerfont{title}\inserttitle\par%
+      %\beamer@ya@titlewidths
+      %\ifx\insertsubtitle\@empty%
+      %\else%
+      %  \vskip0.25em%
+      %  {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      %\fi%     
+      %\vspace{.125\paperheight}%
+    \end{beamercolorbox}%
+  %}%
+  %}%
+  %
+  \begin{beamercolorbox}[wd=\beamer@ya@titlewidths,left,#1]{author}
+    \usebeamerfont{author}\insertauthor
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=\beamer@ya@titlewidths,left,#1]{institute}
+    \usebeamerfont{institute}\insertauthorposition
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=\beamer@ya@titlewidths,left,#1]{date}
+    \usebeamerfont{date}\insertdate
+  \end{beamercolorbox}
+}
+
+% Items.
+\defbeamertemplate*{itemize item}{ya theme}%
+{\hbox{\donotcoloroutermaths{---}}}
+\defbeamertemplate*{itemize subitem}{ya theme}%
+{\hbox{\donotcoloroutermaths{---}}}
+\defbeamertemplate{itemize subsubitem}{ya theme}%
+{\hbox{\donotcoloroutermaths{---}}}
+
+\defbeamertemplate*{background canvas}{ya theme}
+{%
+  \ifnum\c@framenumber=1%
+    \includegraphics[width=\paperwidth]{title.png}
+  \else%
+    \includegraphics[width=\paperwidth]{plainpage.png}
+  \fi%
+}
+
+\mode<all>
+

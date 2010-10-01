@@ -1,0 +1,73 @@
+% Copyright 2007 by Marco Barisione
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\mode<presentation>
+
+\ProcessOptionsBeamer
+
+% Colors.
+\setbeamercolor*{lineup}{parent=palette primary}
+\setbeamercolor*{linemid}{parent=palette secondary}
+\setbeamercolor*{linebottom}{parent=palette tertiary}
+\setbeamercolor*{page header}{parent=titlelike}
+
+% Lengths
+\newlength{\headerheight}
+\setlength{\headerheight}{.045\paperheight}
+\newlength{\beamer@strelka@lineup}
+\setlength{\beamer@strelka@lineup}{.025\paperheight}
+\addtolength{\beamer@strelka@lineup}{.015\paperheight}
+\addtolength{\beamer@strelka@lineup}{.01\paperheight}
+
+% Footer.
+\defbeamertemplate*{footline}{strelka theme}
+{
+  \leavevmode%
+  % Page number.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=0ex,dp=0ex,center]{}%
+    \usebeamerfont{palette primary}\insertframenumber{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=0ex,dp=0ex]{}%
+  \end{beamercolorbox}%
+  } %
+  \vskip\beamer@strelka@lineup
+}
+
+\defbeamertemplate*{headline}{strelka theme}
+{
+  \leavevmode%
+}
+
+\defbeamertemplate*{frametitle}{strelka theme}[1][left]
+{
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+%  \vbox{}\vskip-.5\beamer@leftmargin%
+  \begin{beamercolorbox}[sep=\beamer@leftmargin,#1,wd=\the\@tempdima]{}
+    \usebeamerfont{frametitle}\usebeamercolor[bg]{framesubtitle}%
+    \vbox{}\vskip0ex%
+    \if@tempswa\else\csname beamer@fte#1\endcsname\fi%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[bg]{framesubtitle}\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-\beamer@leftmargin\fi
+  \end{beamercolorbox}%
+}
+
+% Frame title continuations, default
+\defbeamertemplate*{frametitle continuation}{strelka theme}{(\insertcontinuationcount)}
+
+\mode
+<all>
